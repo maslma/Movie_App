@@ -20,10 +20,10 @@ class RoutesGenerator {
     switch (settings.name) {
       case Routes.splashRoute:
         return MaterialPageRoute(builder: (_) => const SplashView());
-      case Routes.loginRoute:
-        return MaterialPageRoute(builder: (_) => const LoginView());
-      case Routes.registerRoute:
-        return MaterialPageRoute(builder: (_) => const RegisterView());
+      // case Routes.loginRoute:
+      //   return MaterialPageRoute(builder: (_) => const LoginView());
+      // case Routes.registerRoute:
+      //   return MaterialPageRoute(builder: (_) => const RegisterView());
       // case Routes.homeRoute:
       //   return MaterialPageRoute(builder: (_) =>  const HomeView());
       // case Routes.navBarRoute:

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../presentation/presentation_managers/exports.dart';
 
 class MyBlocObserver extends BlocObserver {

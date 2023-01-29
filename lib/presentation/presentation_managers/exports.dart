@@ -35,7 +35,7 @@ export 'package:movie_app/presentation/screens/register/view_model/cubit/registe
 // export 'package:movie_app/presentation/screens/cart/view_model/cart_cubit.dart';
 // export 'package:movie_app/presentation/screens/cart/view_model/cart_stats.dart';
 // export 'package:movie_app/presentation/screens/cart/views/widgets/cart_item.dart';
-export 'package:movie_app/domain/models/cart_model.dart';
+//export 'package:movie_app/domain/movie_appppdels/cart_model.dart';dart
 
 // search
 // export 'package:movie_app/presentation/screens/search/view_model/search_state.dart';
