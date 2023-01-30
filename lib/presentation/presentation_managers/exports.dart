@@ -2,12 +2,11 @@
 export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:movie_app/data/local/chach_helper.dart';
-export 'package:movie_app/data/remote/dio_helper.dart';
 export 'package:movie_app/presentation/screens/login/view_model/login_cubit.dart';
 export 'package:movie_app/utities/bloc_observer.dart';
 export 'package:movie_app/presentation/presentation_managers/routes_manager.dart';
 export 'package:movie_app/presentation/presentation_managers/theme_manager.dart';
-// export 'package:movie_app/presentation/screens/bottom_navBar/view_model/bottom_nav_cubit.dart';
+export 'package:movie_app/presentation/screens/bottom_navBar/view_model/bottom_nav_cubit.dart';
 // export 'package:movie_app/presentation/screens/home/view_model/home_cubit.dart';
 // export 'package:movie_app/presentation/screens/profile/view_model/profile_cubit.dart';
 // export 'package:movie_app/presentation/screens/search/view_model/search_cubit.dart';
@@ -46,9 +45,10 @@ export 'package:movie_app/presentation/global_widgets/primary_searchtextfield.da
 export 'package:movie_app/presentation/presentation_managers/constancts_manager.dart';
 
 // route
+export 'package:movie_app/presentation/screens/home/views/home_view.dart';
 export 'package:movie_app/presentation/presentation_managers/string_manager.dart';
-// export 'package:movie_app/presentation/screens/bottom_navBar/views/bottom_navbar_view.dart';
-// export 'package:movie_app/presentation/screens/home/views/home_view.dart';
+export 'package:movie_app/presentation/screens/bottom_navBar/views/bottom_navbar_view.dart';
+// export 'package:movie_app/presentation/screens/home/views/watch_list_view.dart';
 export 'package:movie_app/presentation/screens/login/views/login_view.dart';
 export 'package:movie_app/presentation/screens/register/views/register_view.dart';
 export 'package:movie_app/presentation/screens/splash/views/splash_views.dart';
@@ -58,12 +58,8 @@ export 'package:flutter/cupertino.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 export 'package:movie_app/presentation/presentation_managers/color_manager.dart';
-// export 'package:movie_app/presentation/screens/bottom_navBar/view_model/bottom_nav_state.dart';
-// export 'package:movie_app/presentation/screens/cart/views/cart_view.dart';
-// export 'package:movie_app/presentation/screens/favorite/views/favorite_view.dart';
-// export 'package:movie_app/presentation/screens/home/views/home_view.dart';
-// export 'package:movie_app/presentation/screens/profile/views/profile_view.dart';
-// export 'package:movie_app/presentation/screens/search/views/search_view.dart';
+export 'package:movie_app/presentation/screens/bottom_navBar/view_model/bottom_nav_state.dart';
+
 
 // favorite
 // export 'package:movie_app/presentation/screens/favorite/view_model/favorite_state.dart';
@@ -74,3 +70,17 @@ export 'package:movie_app/presentation/presentation_managers/color_manager.dart'
 // export 'package:movie_app/presentation/screens/home/view_model/home_state.dart';
 // export 'package:movie_app/presentation/screens/product_details/views/product_details_view.dart';
 
+//httpRequest
+export 'package:movie_app/domain/models/genres_model.dart';
+export 'package:movie_app/domain/models/reviews_model.dart';
+export 'package:movie_app/presentation/presentation_managers/constancts_manager.dart';
+export 'package:movie_app/domain/models/movie/movie_details_model.dart';
+export 'package:movie_app/domain/models/movie/movie_model.dart';
+export 'package:movie_app/domain/models/trailers_model.dart';
+export 'package:movie_app/domain/models/tv/tv_details_model.dart';
+export 'package:movie_app/domain/models/tv/tv_model.dart';
+export 'package:dio/dio.dart';
+
+//constancts_manager
+export 'package:dio/dio.dart';
+export 'package:flutter_dotenv/flutter_dotenv.dart';

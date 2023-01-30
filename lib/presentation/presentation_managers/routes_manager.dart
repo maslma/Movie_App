@@ -18,16 +18,16 @@ class Routes {
 class RoutesGenerator {
   static Route<dynamic> getRoutes(RouteSettings settings) {
     switch (settings.name) {
-      case Routes.splashRoute:
-        return MaterialPageRoute(builder: (_) => const SplashView());
+      case Routes.homeRoute:
+        return MaterialPageRoute(builder: (_) => const HomeView());
       // case Routes.loginRoute:
       //   return MaterialPageRoute(builder: (_) => const LoginView());
       // case Routes.registerRoute:
       //   return MaterialPageRoute(builder: (_) => const RegisterView());
       // case Routes.homeRoute:
       //   return MaterialPageRoute(builder: (_) =>  const HomeView());
-      // case Routes.navBarRoute:
-      //   return MaterialPageRoute(builder: (_) => const BottomNavView());
+      case Routes.navBarRoute:
+        return MaterialPageRoute(builder: (_) => const BottomNavView());
 
       default:
         return unDefinedRoute();

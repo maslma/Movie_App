@@ -19,7 +19,7 @@ class GlobalTextButton extends StatelessWidget {
         text ?? 'default text',
         textAlign: TextAlign.center,
         style: TextStyle(
-          color: ColorManager.primary,
+          color: ColorManager.primaryColor,
           fontSize: AppSize.s14,
           
         ),

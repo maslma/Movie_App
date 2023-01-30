@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import '../presentation/presentation_managers/exports.dart';
+import 'package:movie_app/presentation/presentation_managers/exports.dart';
 
 class MyBlocObserver extends BlocObserver {
   @override

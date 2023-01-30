@@ -7,13 +7,12 @@ import 'package:movie_app/presentation/presentation_managers/values_managers.dar
 ThemeData getApplicationTheme() {
   return ThemeData(
     // main colors
-
-    primaryColor: ColorManager.primary,
+  primaryColor: ColorManager.primaryColor,
     primaryColorLight: ColorManager.lightPrimary,
     primaryColorDark: ColorManager.darkPrimary,
     disabledColor: ColorManager.grey1,
-    splashColor: ColorManager.primary,
-    
+    splashColor: ColorManager.primaryColor,
+    scaffoldBackgroundColor: const Color(0xFF151C26),
     // ripple effect color
     // cardview theme
     cardTheme: CardTheme(
@@ -23,17 +22,18 @@ ThemeData getApplicationTheme() {
     ),
     // app bar theme
     appBarTheme: AppBarTheme(
+      backgroundColor:const Color(0xFF151C26),
         centerTitle: true,
-        color: ColorManager.primary,
+        // color: ColorManager.primaryColor,
         elevation: AppSize.s4,
-        shadowColor: ColorManager.lightPrimary,
-        titleTextStyle: getRegularStyle(fontSize: FontSize.s16, color: ColorManager.white)),
+        // shadowColor: ColorManager.lightPrimary,
+        titleTextStyle: getRegularStyle(fontSize: FontSize.s18, color: ColorManager.white,)),
 
     // button theme
     buttonTheme: ButtonThemeData(
         shape: const StadiumBorder(),
         disabledColor: ColorManager.grey1,
-        buttonColor: ColorManager.primary,
+        buttonColor: ColorManager.primaryColor,
         splashColor: ColorManager.lightPrimary),
 
     // elevated button theme
@@ -43,7 +43,7 @@ ThemeData getApplicationTheme() {
           color: ColorManager.white,
           fontSize: FontSize.s17,
         ),
-        backgroundColor: ColorManager.primary,
+        backgroundColor: ColorManager.primaryColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppSize.s12),
         ),
@@ -55,17 +55,17 @@ ThemeData getApplicationTheme() {
       displayLarge: getSemiBoldStyle(color: ColorManager.darkGrey, fontSize: FontSize.s16),
       headlineLarge: getSemiBoldStyle(color: ColorManager.darkGrey, fontSize: FontSize.s16),
       headlineMedium: getRegularStyle(color: ColorManager.darkGrey, fontSize: FontSize.s14),
-      titleMedium: getMediumStyle(color: ColorManager.primary, fontSize: FontSize.s16),
+      titleMedium: getMediumStyle(color: ColorManager.primaryColor, fontSize: FontSize.s16),
       titleSmall: getRegularStyle(color: ColorManager.white, fontSize: FontSize.s16),
       bodyLarge: getRegularStyle(color: ColorManager.grey1),
       bodySmall: getRegularStyle(color: ColorManager.grey),
       bodyMedium: getRegularStyle(color: ColorManager.grey2, fontSize: FontSize.s12),
-      labelSmall: getBoldStyle(color: ColorManager.primary, fontSize: FontSize.s14),
-      labelMedium: getBoldStyle(color: ColorManager.primary, fontSize: FontSize.s35),
+      labelSmall: getBoldStyle(color: ColorManager.primaryColor, fontSize: FontSize.s14),
+      labelMedium: getBoldStyle(color: ColorManager.primaryColor, fontSize: FontSize.s35),
     ),
 
     progressIndicatorTheme: ProgressIndicatorThemeData(
-      color: ColorManager.primary,
+      color: ColorManager.primaryColor,
     ),
 
     // input decoration theme (text form field)
@@ -88,7 +88,7 @@ ThemeData getApplicationTheme() {
 
       // focused border style
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: ColorManager.primary, width: AppSize.s1_5),
+        borderSide: BorderSide(color: ColorManager.primaryColor, width: AppSize.s1_5),
         borderRadius: const BorderRadius.all(
           Radius.circular(AppSize.s8),
         ),
@@ -104,7 +104,7 @@ ThemeData getApplicationTheme() {
 
       // focused border style
       focusedErrorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: ColorManager.primary, width: AppSize.s1_5),
+        borderSide: BorderSide(color: ColorManager.primaryColor, width: AppSize.s1_5),
         borderRadius: const BorderRadius.all(
           Radius.circular(AppSize.s8),
         ),

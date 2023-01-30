@@ -20,13 +20,18 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       useInheritedMediaQuery: true,
       builder: (BuildContext context, Widget? child) {
-        return  MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Shop App',
-            theme: getApplicationTheme(),
-            onGenerateRoute: RoutesGenerator.getRoutes,
-            initialRoute: Routes.splashRoute,
-          );
+        return  MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (context) => BottomNavCubit()),
+          ],
+          child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'Shop App',
+              theme: getApplicationTheme(),
+              onGenerateRoute: RoutesGenerator.getRoutes,
+              initialRoute: Routes.navBarRoute,
+            ),
+        );
       },
     );
   }

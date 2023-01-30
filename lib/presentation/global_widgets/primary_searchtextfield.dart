@@ -79,7 +79,7 @@ class GlobalTextField extends StatelessWidget {
         },
 
         keyboardType: keyboardType,
-        cursorColor: cursorColor ?? ColorManager.primary,
+        cursorColor: cursorColor ?? ColorManager.primaryColor,
         cursorHeight: cursorHeight ?? 25,
         maxLines: maxLine ?? 1,
         obscureText: obscureText ?? false,
@@ -100,13 +100,13 @@ class GlobalTextField extends StatelessWidget {
             child: Icon(
               prefixIcon,
               size: prefixIconSize ?? 28,
-              color: prefixIconColor ?? ColorManager.primary,
+              color: prefixIconColor ?? ColorManager.primaryColor,
             ),
           ),
           prefixIconColor: prefixIconColor,
           floatingLabelStyle: floatingLabelStyle ??
               TextStyle(
-                color: ColorManager.primary,
+                color: ColorManager.primaryColor,
               ),
           labelText: labelText,
           labelStyle: labelStyle,
@@ -124,7 +124,7 @@ class GlobalTextField extends StatelessWidget {
               OutlineInputBorder(
                 borderRadius: BorderRadius.circular(AppSize.s25.r),
                 borderSide: BorderSide(
-                  color: ColorManager.primary,
+                  color: ColorManager.primaryColor,
                 ),
               ),
         ),
