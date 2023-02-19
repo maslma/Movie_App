@@ -18,8 +18,8 @@ class Routes {
 class RoutesGenerator {
   static Route<dynamic> getRoutes(RouteSettings settings) {
     switch (settings.name) {
-      case Routes.homeRoute:
-        return MaterialPageRoute(builder: (_) => const HomeView());
+      // case Routes.homeRoute:
+      //   return MaterialPageRoute(builder: (_) => const MovieShowView());
       // case Routes.loginRoute:
       //   return MaterialPageRoute(builder: (_) => const LoginView());
       // case Routes.registerRoute:

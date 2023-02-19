@@ -1,32 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/presentation/presentation_managers/exports.dart';
+import 'package:movie_app/presentation/screens/home/view_model/home_cubit.dart';
+import 'package:movie_app/presentation/screens/home/views/widget/loading_indicator.dart';
+import 'package:movie_app/presentation/screens/home/views/widget/new_playing_widget.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+class MovieShowView extends StatelessWidget {
+  const MovieShowView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text ('Movie App Demo'),
-      ),
-      // FutureBuilder<MovieModel>(
-      //     future: HttpRequest.getMovies('popular'),
-      //   builder: (BuildContext context,AsyncSnapshot<MovieModel>snapshot)
-      //   {
-      //     if(snapshot.hasData)
-      //     {
-      //       return buildContentWidget(snapshot.data);
-      //     }
-      //     return Container();
-      //   },
-      // ),
+    return BlocConsumer<HomeCubit,HomeState>(
+      listener:(context,state){},
+      builder:(context,state)
+      {
+        HomeCubit cubit = HomeCubit.get(context);
+          return Scaffold(
+            appBar: AppBar(
+              title: const Text ('Movie Shows'),
+            ),
+            body: Column(
+              children:  [
+                Text('New Playing',
+                  style: TextStyle(
+                    color: ColorManager.textColor,
+                  ),),
+                cubit.movieModel == null ? LoadingIndicator() : NewPlayingWidget(),
+              ],
+            ),
+          );
+      } ,
     );
-  }
 }
-// Widget buildContentWidget(MovieModel?movieModel) {
-//   return Container(
-//     child: Center(
-//       child: Text("${movieModel!.movies![0].title}"),
-//     ),
-//   );
-// }
+}

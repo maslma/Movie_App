@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
-import 'package:movie_app/presentation/screens/tvs/views/tvs_view.dart';
-import 'package:movie_app/presentation/screens/watch/views/watch_list_view.dart';
+
 
 class BottomNavCubit extends Cubit<BottomNavState> {
   BottomNavCubit() : super(BottomNavInitial());
@@ -9,7 +8,7 @@ class BottomNavCubit extends Cubit<BottomNavState> {
   static BottomNavCubit get(context) => BlocProvider.of(context);
 
   List<Widget> screens = [
-     const HomeView(),
+     const MovieShowView(),
     const TVsView(),
    const WatchListView()
   ];

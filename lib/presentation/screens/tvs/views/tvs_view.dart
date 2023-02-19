@@ -7,7 +7,7 @@ class TVsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text ('TVs'),
+        title: const Text ('TV Shows'),
       ),
       // FutureBuilder<MovieModel>(
       //     future: HttpRequest.getMovies('popular'),

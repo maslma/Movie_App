@@ -15,14 +15,11 @@ export 'package:movie_app/presentation/screens/bottom_navBar/view_model/bottom_n
 
 // login export
 export  'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-export  'package:flutter_bloc/flutter_bloc.dart';
-export  'package:flutter_screenutil/flutter_screenutil.dart';
 export  'package:movie_app/presentation/global_widgets/global_text_button.dart';
 export  'package:movie_app/presentation/global_widgets/global_text_form_field.dart';
 export  'package:movie_app/presentation/presentation_managers/color_manager.dart';
 export  'package:movie_app/presentation/presentation_managers/string_manager.dart';
 export  'package:movie_app/presentation/presentation_managers/values_managers.dart';
-export 'package:movie_app/presentation/screens/login/view_model/login_cubit.dart';
 export 'package:movie_app/presentation/screens/login/view_model/login_states.dart';
 export  'package:movie_app/utities/main_method.dart';
 
@@ -46,7 +43,6 @@ export 'package:movie_app/presentation/presentation_managers/constancts_manager.
 
 // route
 export 'package:movie_app/presentation/screens/home/views/home_view.dart';
-export 'package:movie_app/presentation/presentation_managers/string_manager.dart';
 export 'package:movie_app/presentation/screens/bottom_navBar/views/bottom_navbar_view.dart';
 // export 'package:movie_app/presentation/screens/home/views/watch_list_view.dart';
 export 'package:movie_app/presentation/screens/login/views/login_view.dart';
@@ -55,11 +51,10 @@ export 'package:movie_app/presentation/screens/splash/views/splash_views.dart';
 
 // Bottom nav bar
 export 'package:flutter/cupertino.dart';
-export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
-export 'package:movie_app/presentation/presentation_managers/color_manager.dart';
 export 'package:movie_app/presentation/screens/bottom_navBar/view_model/bottom_nav_state.dart';
-
+export 'package:movie_app/presentation/screens/tvs/views/tvs_view.dart';
+export 'package:movie_app/presentation/screens/watch/views/watch_list_view.dart';
 
 // favorite
 // export 'package:movie_app/presentation/screens/favorite/view_model/favorite_state.dart';
@@ -67,13 +62,12 @@ export 'package:movie_app/presentation/screens/bottom_navBar/view_model/bottom_n
 // export 'package:movie_app/presentation/screens/favorite/views/widget/favorite_item.dart';
 
 // home
-// export 'package:movie_app/presentation/screens/home/view_model/home_state.dart';
-// export 'package:movie_app/presentation/screens/product_details/views/product_details_view.dart';
+export  'package:movie_app/presentation/screens/home/view_model/home_state.dart';
+
 
 //httpRequest
 export 'package:movie_app/domain/models/genres_model.dart';
 export 'package:movie_app/domain/models/reviews_model.dart';
-export 'package:movie_app/presentation/presentation_managers/constancts_manager.dart';
 export 'package:movie_app/domain/models/movie/movie_details_model.dart';
 export 'package:movie_app/domain/models/movie/movie_model.dart';
 export 'package:movie_app/domain/models/trailers_model.dart';
@@ -82,5 +76,4 @@ export 'package:movie_app/domain/models/tv/tv_model.dart';
 export 'package:dio/dio.dart';
 
 //constancts_manager
-export 'package:dio/dio.dart';
 export 'package:flutter_dotenv/flutter_dotenv.dart';

@@ -4,19 +4,19 @@
 //and i will create JSON model and details model for both movie and tv
 //let's start with movie model
 class MovieModel {
-  final List<Movie>? movies;
-  final String? error;
+   List<Movie>? movies;
+   String? error;
 
   MovieModel({this.movies, this.error});
 
-  factory MovieModel.fromJson(Map<String, dynamic> json)=>
-      MovieModel(
-        movies: (json['results'] as List)
-            .map((data) => Movie.fromJson(data))
-            .toList(),
-        error: "",
-      );
-
+   MovieModel.fromJson(Map<String, dynamic> json){
+     MovieModel(
+       movies: (json['results'] as List)
+           .map((data) => Movie.fromJson(data))
+           .toList(),
+       error: "",
+     );
+   }
 //this model is in case the is error return from api
   factory MovieModel.withError(String error)=>
       MovieModel(
