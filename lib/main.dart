@@ -10,7 +10,6 @@ Future main() async {
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   await CachHelper.init();
-  // await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
@@ -28,11 +27,11 @@ class MyApp extends StatelessWidget {
         return  MultiBlocProvider(
           providers: [
             BlocProvider(create: (context) => BottomNavCubit()),
-            BlocProvider(create: (context) => HomeCubit()),
+            BlocProvider(create: (context) => HomeCubit()..getMovies()),
           ],
           child: MaterialApp(
               debugShowCheckedModeBanner: false,
-              title: 'Shop App',
+              title: 'Movie App',
               theme: getApplicationTheme(),
               onGenerateRoute: RoutesGenerator.getRoutes,
               initialRoute: Routes.navBarRoute,

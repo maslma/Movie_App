@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
 import 'package:movie_app/presentation/screens/home/view_model/home_cubit.dart';
-import 'package:movie_app/presentation/screens/home/views/widget/loading_indicator.dart';
+import 'package:movie_app/presentation/screens/home/views/widget/shimmer_new_playing.dart';
 import 'package:movie_app/presentation/screens/home/views/widget/new_playing_widget.dart';
 
 class MovieShowView extends StatelessWidget {
@@ -20,11 +20,7 @@ class MovieShowView extends StatelessWidget {
             ),
             body: Column(
               children:  [
-                Text('New Playing',
-                  style: TextStyle(
-                    color: ColorManager.textColor,
-                  ),),
-                cubit.movieModel == null ? LoadingIndicator() : NewPlayingWidget(),
+                cubit.movieModel == null ?  const LoadingIndicator() : NewPlayingWidget(movieModel: cubit.movieModel),
               ],
             ),
           );

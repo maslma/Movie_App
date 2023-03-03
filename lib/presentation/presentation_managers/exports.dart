@@ -63,17 +63,6 @@ export 'package:movie_app/presentation/screens/watch/views/watch_list_view.dart'
 
 // home
 export  'package:movie_app/presentation/screens/home/view_model/home_state.dart';
-
-
-//httpRequest
-export 'package:movie_app/domain/models/genres_model.dart';
-export 'package:movie_app/domain/models/reviews_model.dart';
-export 'package:movie_app/domain/models/movie/movie_details_model.dart';
+export 'package:page_indicator/page_indicator.dart';
 export 'package:movie_app/domain/models/movie/movie_model.dart';
-export 'package:movie_app/domain/models/trailers_model.dart';
-export 'package:movie_app/domain/models/tv/tv_details_model.dart';
-export 'package:movie_app/domain/models/tv/tv_model.dart';
 export 'package:dio/dio.dart';
-
-//constancts_manager
-export 'package:flutter_dotenv/flutter_dotenv.dart';

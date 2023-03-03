@@ -1,4 +1,3 @@
-import 'package:movie_app/data/remote/dio_helper.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
 
 class HomeCubit extends Cubit<HomeState>{
@@ -12,13 +11,14 @@ class HomeCubit extends Cubit<HomeState>{
   MovieModel? movieModel;
   void getMovies() {
     emit(HomeGetMoviesLoadingState());
-    DioHelper.getData(
-      url: AppConst.getMoviesUrl,
+    Dio().get(
+      'https://api.themoviedb.org/3/movie/now_playing?api_key=0eeb15efa75896ed8f97a4cb1b9c3fd5&language=en-US&page=1'
     ).then((value) {
-      movieModel = MovieModel.fromJson(value!.data);
+      movieModel = MovieModel.fromJson(value.data);
       emit(HomeGetMoviesSuccessState());
     }).catchError((error) {
-      emit(HomeGetMoviesErrorState(error));
+      emit(HomeGetMoviesErrorState(error.toString()));
+      debugPrint(error.toString());
     });
   }
 }
