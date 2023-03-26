@@ -1,30 +1,41 @@
 class GenreModel {
-  final List<Genre>? genres;
-  final String? error;
+  List<Genres>? genres;
 
-  GenreModel({this.genres, this.error});
+  GenreModel({this.genres});
 
-  factory GenreModel.fromJson(Map<String, dynamic> json) => GenreModel(
-    genres: (json["genres"] as List)
-        .map((genre) => Genre.fromJson(genre))
-        .toList(),
-    error: "",
-  );
+  GenreModel.fromJson(Map<String, dynamic> json) {
+    if (json['genres'] != null) {
+      genres = <Genres>[];
+      json['genres'].forEach((v) {
+        genres!.add(Genres.fromJson(v));
+      });
+    }
+  }
 
-  factory GenreModel.withError(String error) => GenreModel(
-    genres: [],
-    error: error,
-  );
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (genres != null) {
+      data['genres'] = genres!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
 }
 
-class Genre {
+class Genres {
   int? id;
   String? name;
 
-  Genre({this.id, this.name});
+  Genres({this.id, this.name});
 
-  factory Genre.fromJson(Map<String, dynamic> json) => Genre(
-    id: json['id'],
-    name: json['name'],
-  );
+  Genres.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    return data;
+  }
 }

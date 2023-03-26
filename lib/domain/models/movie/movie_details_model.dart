@@ -24,7 +24,7 @@ class MovieDetailsModel {
 
 class MovieDetails {
   int? id;
-  List<Genre>? genres;
+  List<Genres>? genres;
   String? releaseDate;
   String? overview;
   String? backDrop;
@@ -48,7 +48,7 @@ class MovieDetails {
   factory MovieDetails.fromJson(Map<String, dynamic> json) => MovieDetails(
     id: json['id'],
     genres: (json['genres'] as List)
-        .map((genre) => Genre.fromJson(genre))
+        .map((genres) => Genres.fromJson(genres))
         .toList(),
     rating: json['vote_average'].toDouble(),
     title: json['title'],

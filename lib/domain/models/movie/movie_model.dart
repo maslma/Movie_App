@@ -1,8 +1,3 @@
-//now, i started with create JSON model, movie and TV
-//so now, i started to create JSON model
-//as you can see, i have to folders movie and tv
-//and i will create JSON model and details model for both movie and tv
-//let's start with movie model
 class MovieModel {
   Dates? dates;
   int? page;
@@ -44,11 +39,6 @@ class MovieModel {
     return data;
   }
 }
-
-//the parameter "results", is from tmdb api
-//all these parameters you may found in tmdb api website
-//just retrieve whatever you need
-//let create Movie model
 
 class Dates {
   String? maximum;

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/presentation/global_widgets/shimmer_new_playing.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
 import 'package:movie_app/presentation/screens/home/view_model/home_cubit.dart';
-import 'package:movie_app/presentation/screens/home/views/widget/shimmer_new_playing.dart';
+import 'package:movie_app/presentation/screens/home/views/widget/genres_list_widget.dart';
 import 'package:movie_app/presentation/screens/home/views/widget/new_playing_widget.dart';
 
 class MovieShowView extends StatelessWidget {
@@ -18,9 +19,10 @@ class MovieShowView extends StatelessWidget {
             appBar: AppBar(
               title: const Text ('Movie Shows'),
             ),
-            body: Column(
+            body: ListView(
               children:  [
-                cubit.movieModel == null ?  const LoadingIndicator() : NewPlayingWidget(movieModel: cubit.movieModel),
+                cubit.movieModel == null ?  Container(): NewPlayingWidget(movieModel: cubit.movieModel),
+                cubit.genreModel == null ?  Container() :GenreLists(genres: cubit.genreModel!.genres!),
               ],
             ),
           );
