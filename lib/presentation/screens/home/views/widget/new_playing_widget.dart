@@ -1,6 +1,5 @@
 // ignore_for_file: must_be_immutable
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
-
 class NewPlayingWidget extends StatelessWidget {
   NewPlayingWidget({
     Key? key,

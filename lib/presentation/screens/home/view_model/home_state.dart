@@ -20,3 +20,9 @@ class HomeGetDiscoverErrorState extends HomeState {
   String? error;
   HomeGetDiscoverErrorState(this.error);
 }
+class HomeGetUpcomingLoadingState extends HomeState {}
+class HomeGetUpcomingSuccessState extends HomeState {}
+class HomeGetUpcomingErrorState extends HomeState {
+  String? error;
+  HomeGetUpcomingErrorState(this.error);
+}

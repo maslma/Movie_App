@@ -21,6 +21,32 @@ class HomeCubit extends Cubit<HomeState>{
       debugPrint(error.toString());
     });
   }
+ void getUpcoming() {
+    emit(HomeGetUpcomingLoadingState());
+    Dio().get(
+      'https://api.themoviedb.org/3/movie/upcoming?api_key=0eeb15efa75896ed8f97a4cb1b9c3fd5&language=en-US&page=1'
+    ).then((value) {
+      movieModel = MovieModel.fromJson(value.data);
+      emit(HomeGetUpcomingSuccessState());
+    }).catchError((error) {
+      emit(HomeGetUpcomingErrorState(error.toString()));
+      debugPrint(error.toString());
+    });
+  }
+
+  void getDiscoverMovies(int id) {
+    emit(HomeGetDiscoverLoadingState());
+    Dio().get(
+      'https://api.themoviedb.org/3/discover/movie?api_key=0eeb15efa75896ed8f97a4cb1b9c3fd5&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate'
+    ).then((value) {
+      movieModel = MovieModel.fromJson(value.data);
+      emit(HomeGetDiscoverSuccessState());
+    }).catchError((error) {
+      emit(HomeGetDiscoverErrorState(error.toString()));
+      debugPrint(error.toString());
+    });
+  }
+
 
   GenreModel? genreModel;
   void getGenre() {
