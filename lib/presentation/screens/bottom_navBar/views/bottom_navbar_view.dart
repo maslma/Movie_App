@@ -18,10 +18,10 @@ class BottomNavView extends StatelessWidget {
             items: cubit.items,
             confineInSafeArea: true,
             backgroundColor: ColorManager.primaryColor, // Default is Colors.white.
-            decoration: NavBarDecoration(
-              borderRadius: BorderRadius.circular(AppSize.s20.r),
-            ),
-            margin: EdgeInsets.symmetric(horizontal: AppSize.s14.w, vertical: AppSize.s14.h),
+            // decoration: NavBarDecoration(
+            //   borderRadius: BorderRadius.circular(AppSize.s20.r),
+            // ),
+            // margin: EdgeInsets.symmetric(horizontal: AppSize.s14.w, vertical: AppSize.s14.h),
             // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
             resizeToAvoidBottomInset: false,
             stateManagement: true, // Default is true.
@@ -38,7 +38,7 @@ class BottomNavView extends StatelessWidget {
               curve: Curves.ease,
               duration: Duration(milliseconds: 150),
             ),
-            navBarStyle: NavBarStyle.style8, // Choose the nav bar style with this property.
+            navBarStyle: NavBarStyle.style9, // Choose the nav bar style with this property.
             bottomScreenMargin: 0.0,
           ),
         );

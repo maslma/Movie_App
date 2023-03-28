@@ -20,9 +20,9 @@ class HomeGetDiscoverErrorState extends HomeState {
   String? error;
   HomeGetDiscoverErrorState(this.error);
 }
-class HomeGetUpcomingLoadingState extends HomeState {}
-class HomeGetUpcomingSuccessState extends HomeState {}
-class HomeGetUpcomingErrorState extends HomeState {
+class HomeGetTypeMoviesLoadingState extends HomeState {}
+class HomeGetTypeMoviesSuccessState extends HomeState {}
+class HomeGetTypeMoviesErrorState extends HomeState {
   String? error;
-  HomeGetUpcomingErrorState(this.error);
+  HomeGetTypeMoviesErrorState(this.error);
 }

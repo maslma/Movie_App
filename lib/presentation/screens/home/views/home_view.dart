@@ -24,7 +24,8 @@ class MovieShowView extends StatelessWidget {
               children:  [
                 cubit.movieModel == null ?  Container(): NewPlayingWidget(movieModel: cubit.movieModel),
                 cubit.genreModel == null ?  Container() :GenreLists(genres: cubit.genreModel!.genres!),
-                cubit.movieModel == null ?  Container() :const MoviesWidget(text: 'UPCOMING',request: 'upcoming'),
+                cubit.movieModel == null ?  Container() : const MoviesWidget(text: 'POPULAR',request: 'popular'),
+                cubit.movieModel == null ?  Container() : const MoviesWidget(text: 'TOP RATED',request: 'top_rated'),
               ],
 
             ),

@@ -144,17 +144,19 @@
 //
 // ///get Movies with different requests
 // //such as "now_playing", "popular", "top_ rated", and "upcoming"
-// //   static Future<MovieModel> getMovies(String request) async {
-// //     var params = {"api_key": AppConst.apiKey, "language": "en-us"};
-// //
-// //     try {
-// //       Response response =
-// //       await AppConst.dio.get("${AppConst.getMoviesUrl}/$request", queryParameters: params);
-// //       return MovieModel.fromJson(response.data);
-// //     } catch (error) {
-// //       return MovieModel.withError("$error");
-// //     }
-// //   }
+//
+// Future<MovieModel> getMovies(String request) async {
+//   var params = {"api_key": AppConst.apiKey, "language": "en-us"};
+//
+//   try {
+//     Response response =
+//     await AppConst.dio.get("${AppConst.getMoviesUrl}/$request", queryParameters: params);
+//     return MovieModel.fromJson(response.data);
+//   } catch (error) {
+//     return MovieModel.withError("$error");
+//   }
+// }  static import 'package:movie_app/presentation/presentation_managers/constancts_manager.dart';
+
 //
 // //get tv shows with different requests
 // // such as "airing_today", "on_ the_air", "top_ rated", and "popular

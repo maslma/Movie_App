@@ -3,8 +3,6 @@ import 'package:movie_app/data/remote/dio_helper.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
 import 'package:movie_app/presentation/screens/home/view_model/home_cubit.dart';
 
-
-
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
@@ -24,19 +22,22 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       useInheritedMediaQuery: true,
       builder: (BuildContext context, Widget? child) {
-        return  MultiBlocProvider(
+        return MultiBlocProvider(
           providers: [
             BlocProvider(create: (context) => BottomNavCubit()),
-            BlocProvider(create: (context) => HomeCubit()..getMovies()..getGenre()..getUpcoming()),
+            BlocProvider(
+                create: (context) => HomeCubit()
+                  ..getMovies()
+                  ..getGenre()),
           ],
           child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: 'Movie App',
-              theme: getApplicationTheme(),
-              // onGenerateRoute: RoutesGenerator.getRoutes,
-              // initialRoute: Routes.navBarRoute,
+            debugShowCheckedModeBanner: false,
+            title: 'Movie App',
+            theme: getApplicationTheme(),
+            // onGenerateRoute: RoutesGenerator.getRoutes,
+            // initialRoute: Routes.navBarRoute,
             home: const BottomNavView(),
-            ),
+          ),
         );
       },
     );

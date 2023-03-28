@@ -1,11 +1,13 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:movie_app/domain/models/genres_model.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
 import 'package:movie_app/presentation/screens/home/views/widget/genres_movies_widget.dart';
 
 class GenreLists extends StatefulWidget {
-  const GenreLists({Key? key,required this.genres}) : super(key: key);
-  final List<Genres> genres;
+   GenreLists({Key? key,required this.genres}) : super(key: key);
+   List<Genres>? genres;
 
   @override
   State<GenreLists> createState() => _GenreListsState();
@@ -17,7 +19,7 @@ class _GenreListsState extends State<GenreLists>
   @override
   void initState() {
     _tabController = TabController(
-        length:  widget.genres.length,
+        length:  widget.genres!.length,
         vsync: this);
     _tabController!.addListener(() {});
     super.initState();
@@ -34,7 +36,7 @@ class _GenreListsState extends State<GenreLists>
     return SizedBox(
       height: 300.h,
       child: DefaultTabController(
-        length: widget.genres.length,
+        length: widget.genres!.length,
         child: Scaffold(
           appBar: PreferredSize(
             preferredSize:  Size.fromHeight(50.h),
@@ -48,7 +50,7 @@ class _GenreListsState extends State<GenreLists>
                 unselectedLabelColor: ColorManager.textColor,
                 labelColor: Colors.white,
                 isScrollable: true,
-                tabs: widget.genres.map((Genres genre) {
+                tabs: widget.genres!.map((Genres genre) {
                   return Container(
                     padding:  EdgeInsets.only(
                       bottom: 15.h,
@@ -69,8 +71,8 @@ class _GenreListsState extends State<GenreLists>
           body: TabBarView(
             controller: _tabController,
             physics: const NeverScrollableScrollPhysics(),
-            children: widget.genres.map((Genres genre) {
-              return  GenreMovies(genreId: genre.id!,);
+            children: widget.genres!.map((Genres genre) {
+              return  GenreMovies(genreId: genre.id!);
             }).toList(),
           ),
         ),

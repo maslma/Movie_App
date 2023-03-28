@@ -21,15 +21,19 @@ class HomeCubit extends Cubit<HomeState>{
       debugPrint(error.toString());
     });
   }
- void getUpcoming() {
-    emit(HomeGetUpcomingLoadingState());
+ void getTypeMovies(String request) {
+    emit(HomeGetTypeMoviesLoadingState());
     Dio().get(
-      'https://api.themoviedb.org/3/movie/upcoming?api_key=0eeb15efa75896ed8f97a4cb1b9c3fd5&language=en-US&page=1'
+      'https://api.themoviedb.org/3/movie/$request',
+      queryParameters: {
+        "language": "en-us",
+        "api_key" : "0eeb15efa75896ed8f97a4cb1b9c3fd5"
+      }
     ).then((value) {
       movieModel = MovieModel.fromJson(value.data);
-      emit(HomeGetUpcomingSuccessState());
+      emit(HomeGetTypeMoviesSuccessState());
     }).catchError((error) {
-      emit(HomeGetUpcomingErrorState(error.toString()));
+      emit(HomeGetTypeMoviesErrorState(error.toString()));
       debugPrint(error.toString());
     });
   }
@@ -37,7 +41,12 @@ class HomeCubit extends Cubit<HomeState>{
   void getDiscoverMovies(int id) {
     emit(HomeGetDiscoverLoadingState());
     Dio().get(
-      'https://api.themoviedb.org/3/discover/movie?api_key=0eeb15efa75896ed8f97a4cb1b9c3fd5&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate'
+      'https://api.themoviedb.org/3/discover/movie?api_key=0eeb15efa75896ed8f97a4cb1b9c3fd5&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate',
+      queryParameters: {
+        "language": "en-us",
+        "page": 1,
+        "with_genres": id,//discover movies by genres
+      }
     ).then((value) {
       movieModel = MovieModel.fromJson(value.data);
       emit(HomeGetDiscoverSuccessState());
@@ -46,7 +55,6 @@ class HomeCubit extends Cubit<HomeState>{
       debugPrint(error.toString());
     });
   }
-
 
   GenreModel? genreModel;
   void getGenre() {
