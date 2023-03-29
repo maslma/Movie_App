@@ -6,7 +6,7 @@ import 'package:movie_app/presentation/presentation_managers/exports.dart';
 import 'package:movie_app/presentation/screens/home/view_model/home_cubit.dart';
 
 class MoviesWidget extends StatelessWidget {
-   const MoviesWidget({Key? key, required this.text, required this.request})
+  const MoviesWidget({Key? key, required this.text, required this.request})
       : super(key: key);
   final String text;
   final String request;
@@ -14,7 +14,7 @@ class MoviesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context)=>HomeCubit()..getTypeMovies(request),
+      create: (BuildContext context) => HomeCubit()..getTypeMovies(request),
       child: BlocConsumer<HomeCubit, HomeState>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -116,8 +116,8 @@ class MoviesWidget extends StatelessWidget {
                                 ),
                                 RatingBar.builder(
                                   itemSize: 8,
-                                  initialRating: cubit.movieModel!.movies![index]
-                                          .voteAverage! /
+                                  initialRating: cubit.movieModel!
+                                          .movies![index].voteAverage! /
                                       2,
                                   minRating: 1,
                                   direction: Axis.horizontal,
