@@ -25,18 +25,18 @@ class MyApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(create: (context) => BottomNavCubit()),
-            BlocProvider(
-                create: (context) => HomeCubit()
+            BlocProvider(create: (context) => HomeCubit()
                   ..getMovies()
-                  ..getGenre()),
+                  ..getGenre()
+            ),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Movie App',
             theme: getApplicationTheme(),
-            // onGenerateRoute: RoutesGenerator.getRoutes,
-            // initialRoute: Routes.navBarRoute,
-            home: const BottomNavView(),
+            onGenerateRoute: RoutesGenerator.getRoutes,
+            initialRoute: Routes.navBarRoute,
+            // home: const BottomNavView(),
           ),
         );
       },

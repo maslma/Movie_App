@@ -1,12 +1,12 @@
 // ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
+import 'package:movie_app/presentation/screens/details/views/movies_details.dart';
 import 'package:movie_app/presentation/screens/home/view_model/home_cubit.dart';
 
-class MoviesWidget extends StatelessWidget {
-  const MoviesWidget({Key? key, required this.text, required this.request})
+class MoviesTypeWidget extends StatelessWidget {
+  const MoviesTypeWidget({Key? key, required this.text, required this.request})
       : super(key: key);
   final String text;
   final String request;
@@ -54,11 +54,11 @@ class MoviesWidget extends StatelessWidget {
                       ),
                       child: GestureDetector(
                         onTap: () {
-                          // Navigator.of(context).push(MaterialPageRoute(
-                          //     builder: (_) => MoviesDetailsScreen(
-                          //           movie: movies[index],
-                          //           request: request,
-                          //         )));
+                          Navigator.of(context, rootNavigator: true).push(
+                            MaterialPageRoute(
+                              builder: (context) => MoviesDetails(movie: cubit.movieModel!.movies![index]),
+                            ),
+                          );
                         },
                         child: Column(
                           children: <Widget>[
@@ -69,7 +69,7 @@ class MoviesWidget extends StatelessWidget {
                                 width: 120.w,
                                 height: 180.h,
                                 decoration: BoxDecoration(
-                                  // color: ColorManager.secondColor,
+                                  color: ColorManager.secondColor,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(2.r)),
                                   shape: BoxShape.rectangle,

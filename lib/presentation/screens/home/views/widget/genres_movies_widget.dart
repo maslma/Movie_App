@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
+import 'package:movie_app/presentation/screens/details/views/movies_details.dart';
 import 'package:movie_app/presentation/screens/home/view_model/home_cubit.dart';
 
 class GenreMovies extends StatelessWidget {
@@ -30,9 +31,11 @@ class GenreMovies extends StatelessWidget {
                   ),
                   child: GestureDetector(
                     onTap: () {
-                      // Navigator.of(context).push(MaterialPageRoute(
-                      //     builder: (_) =>
-                      //         MoviesDetailsScreen(movie: movies![index])));
+                      Navigator.of(context, rootNavigator: true).push(
+                        MaterialPageRoute(
+                          builder: (context) => MoviesDetails(movie: cubit.movieModel!.movies![index]),
+                        ),
+                      );
                     },
                     child: Column(
                       children: <Widget>[
@@ -42,7 +45,7 @@ class GenreMovies extends StatelessWidget {
                                   width: 120.w,
                                   height: 180.h,
                                   decoration: BoxDecoration(
-                                    // color: ColorManager.secondColor,
+                                    color: ColorManager.secondColor,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(2)),
                                     shape: BoxShape.rectangle,

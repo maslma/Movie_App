@@ -8,6 +8,7 @@ class TVsView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text ('TV Shows'),
+        elevation: 0.0,
       ),
       // FutureBuilder<MovieModel>(
       //     future: HttpRequest.getMovies('popular'),

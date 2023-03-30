@@ -8,6 +8,7 @@ class WatchListView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text ('Watch Lists'),
+        elevation: 0.0,
       ),
       // FutureBuilder<MovieModel>(
       //     future: HttpRequest.getMovies('popular'),

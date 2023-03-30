@@ -18,15 +18,16 @@ class MovieShowView extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               title: const Text ('Movie Shows'),
+              elevation: 0.0,
             ),
             body: ListView(
               physics: const BouncingScrollPhysics(),
               children:  [
                 cubit.movieModel == null ?  Container(): NewPlayingWidget(movieModel: cubit.movieModel),
                 cubit.genreModel == null ?  Container() :GenreLists(genres: cubit.genreModel!.genres!),
-                cubit.movieModel == null ?  Container() : const MoviesWidget(text: 'UPCOMING',request: 'upcoming'),
-                cubit.movieModel == null ?  Container() : const MoviesWidget(text: 'POPULAR',request: 'popular'),
-                cubit.movieModel == null ?  Container() : const MoviesWidget(text: 'TOP RATED',request: 'top_rated'),
+                // cubit.movieModel == null ?  Container() : const MoviesTypeWidget(text: 'UPCOMING',request: 'upcoming'),
+                cubit.movieModel == null ?  Container() : const MoviesTypeWidget(text: 'POPULAR',request: 'popular'),
+                cubit.movieModel == null ?  Container() : const MoviesTypeWidget(text: 'TOP RATED',request: 'top_rated'),
                 SizedBox(height: 40.h,)
               ],
             ),

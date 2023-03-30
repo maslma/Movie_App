@@ -21,6 +21,7 @@ class HomeCubit extends Cubit<HomeState>{
       debugPrint(error.toString());
     });
   }
+
  void getTypeMovies(String request) {
     emit(HomeGetTypeMoviesLoadingState());
     Dio().get(
