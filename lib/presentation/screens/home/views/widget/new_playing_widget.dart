@@ -33,8 +33,8 @@ class NewPlayingWidget extends StatelessWidget {
                     shape: BoxShape.rectangle,
                     image: DecorationImage(
                       image: NetworkImage(
-                          "https://image.tmdb.org/t/p/w220_and_h330_face${movieModel!.movies![index].backdropPath}"),
-                      fit: BoxFit.fill,
+                          "https://image.tmdb.org/t/p/original${movieModel!.movies![index].backdropPath}"),
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),

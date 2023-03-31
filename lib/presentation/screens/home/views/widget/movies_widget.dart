@@ -56,7 +56,7 @@ class MoviesTypeWidget extends StatelessWidget {
                         onTap: () {
                           Navigator.of(context, rootNavigator: true).push(
                             MaterialPageRoute(
-                              builder: (context) => MoviesDetails(movie: cubit.movieModel!.movies![index]),
+                              builder: (context) => MoviesDetails(movie: cubit.movieModel!.movies![index],request: request),
                             ),
                           );
                         },
