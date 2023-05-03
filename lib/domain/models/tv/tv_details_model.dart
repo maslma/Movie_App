@@ -19,7 +19,7 @@ class TVDetailsModel {
 
 class TVDetails {
   int? id;
-  List<Genre>? genres;
+  List<Genres>? genres;
   String? firstAirDate; //first_air_date instead of release data
   String? overview;
   String? backDrop;
@@ -44,7 +44,7 @@ class TVDetails {
   factory TVDetails.fromJson(Map<String, dynamic> json) => TVDetails(
     id: json['id'],
     genres: (json['genres'] as List)
-        .map((genre) => Genre.fromJson(genre))
+        .map((genre) => Genres.fromJson(genre))
         .toList(),
     rating: json['vote_average'].toDouble(),
     name: json['name'],
