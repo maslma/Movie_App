@@ -26,3 +26,10 @@ class HomeGetTypeMoviesErrorState extends HomeState {
   String? error;
   HomeGetTypeMoviesErrorState(this.error);
 }
+
+class HomeGetDetailsMoviesLoadingState extends HomeState {}
+class HomeGetDetailsMoviesSuccessState extends HomeState {}
+class HomeGetDetailsMoviesErrorState extends HomeState {
+  String? error;
+  HomeGetDetailsMoviesErrorState(this.error);
+}

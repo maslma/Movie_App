@@ -1,4 +1,5 @@
 import 'package:movie_app/domain/models/genres_model.dart';
+import 'package:movie_app/domain/models/movie/movie_details_model.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
 
 class HomeCubit extends Cubit<HomeState>{
@@ -67,6 +68,24 @@ class HomeCubit extends Cubit<HomeState>{
       emit(HomeGetGenreSuccessState());
     }).catchError((error) {
       emit(HomeGetGenreErrorState(error.toString()));
+      debugPrint(error.toString());
+    });
+  }
+  MovieDetails? movieDetails;
+
+  void getMoviesDetails(int id) {
+      emit(HomeGetDetailsMoviesLoadingState());
+    Dio().get(
+        'https://api.themoviedb.org/3/movie/$id',
+        queryParameters: {
+          "language": "en-us",
+          "api_key" : "0eeb15efa75896ed8f97a4cb1b9c3fd5"
+        }
+    ).then((value) {
+      movieDetails = MovieDetails.fromJson(value.data);
+      emit(HomeGetDetailsMoviesSuccessState());
+    }).catchError((error) {
+      emit(HomeGetDetailsMoviesErrorState(error.toString()));
       debugPrint(error.toString());
     });
   }

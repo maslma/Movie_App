@@ -10,7 +10,7 @@ class GenreMovies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context)=>HomeCubit()..getDiscoverMovies(genreId),
+      create: (BuildContext context) => HomeCubit()..getDiscoverMovies(genreId),
       child: BlocConsumer<HomeCubit, HomeState>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -21,10 +21,12 @@ class GenreMovies extends StatelessWidget {
             child: ListView.builder(
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
-              itemCount:cubit.movieModel == null ? 0 : cubit.movieModel!.movies!.length,
+              itemCount: cubit.movieModel == null
+                  ? 0
+                  : cubit.movieModel!.movies!.length,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding:  EdgeInsets.only(
+                  padding: EdgeInsets.only(
                     top: 10.h,
                     bottom: 10.h,
                     right: 10.w,
@@ -33,31 +35,32 @@ class GenreMovies extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                         MaterialPageRoute(
-                          builder: (context) => MoviesDetails(movie: cubit.movieModel!.movies![index]),
+                          builder: (context) => MoviesDetails(
+                              movie: cubit.movieModel!.movies![index]),
                         ),
                       );
                     },
                     child: Column(
                       children: <Widget>[
                         Hero(
-                                tag: '${cubit.movieModel!.movies![index].id}',
-                                child: Container(
-                                  width: 120.w,
-                                  height: 180.h,
-                                  decoration: BoxDecoration(
-                                    color: ColorManager.secondColor,
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(2)),
-                                    shape: BoxShape.rectangle,
-                                    image: DecorationImage(
-                                      image: NetworkImage(
-                                          "https://image.tmdb.org/t/p/w220_and_h330_face${cubit.movieModel!.movies![index].posterPath}"),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
+                          tag: '${cubit.movieModel!.movies![index].id}',
+                          child: Container(
+                            width: 120.w,
+                            height: 180.h,
+                            decoration: BoxDecoration(
+                              color: ColorManager.secondColor,
+                              borderRadius:
+                                   BorderRadius.all(Radius.circular(2.r)),
+                              shape: BoxShape.rectangle,
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                    "https://image.tmdb.org/t/p/w220_and_h330_face${cubit.movieModel!.movies![index].posterPath}"),
+                                fit: BoxFit.cover,
                               ),
-                         SizedBox(
+                            ),
+                          ),
+                        ),
+                        SizedBox(
                           height: 10.h,
                         ),
                         SizedBox(
@@ -65,7 +68,7 @@ class GenreMovies extends StatelessWidget {
                           child: Text(
                             cubit.movieModel!.movies![index].title!,
                             overflow: TextOverflow.ellipsis,
-                            style:  TextStyle(
+                            style: TextStyle(
                               height: 1.4.h,
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -79,19 +82,22 @@ class GenreMovies extends StatelessWidget {
                         Row(
                           children: <Widget>[
                             Text(
-                              cubit.movieModel!.movies![index].voteAverage.toString(),
-                              style:  TextStyle(
+                              cubit.movieModel!.movies![index].voteAverage
+                                  .toString(),
+                              style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 10.sp,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                             SizedBox(
+                            SizedBox(
                               width: 5.w,
                             ),
                             RatingBar.builder(
                               itemSize: 8,
-                              initialRating: cubit.movieModel!.movies![index].voteAverage! / 2,
+                              initialRating: cubit
+                                      .movieModel!.movies![index].voteAverage! /
+                                  2,
                               minRating: 1,
                               direction: Axis.horizontal,
                               allowHalfRating: true,
