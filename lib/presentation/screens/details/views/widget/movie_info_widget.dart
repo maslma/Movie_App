@@ -17,7 +17,7 @@ class MovieInfoWidget extends StatelessWidget {
         return Column(
           children: [
             Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 40.w),
+              padding:  EdgeInsets.symmetric(horizontal: 20.w),
               child: Row(
                 children:[
                   SizedBox(
@@ -30,7 +30,7 @@ class MovieInfoWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding:  EdgeInsets.only(left: 26.w, top: 20.h),
+                            padding:  EdgeInsets.only(left: 22.w, top: 20.h),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
@@ -66,9 +66,9 @@ class MovieInfoWidget extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding:  EdgeInsets.only(left: 30.w),
+                            padding:  EdgeInsets.only(left: 22.w),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,6 +93,9 @@ class MovieInfoWidget extends StatelessWidget {
                                       ),
                                     ),
                                   ],
+                                ),
+                                SizedBox(
+                                  width: 48.w,
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
