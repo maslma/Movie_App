@@ -64,7 +64,7 @@ ThemeData getApplicationTheme() {
       labelMedium: getBoldStyle(color: ColorManager.primaryColor, fontSize: FontSize.s35),
     ),
 
-    progressIndicatorTheme: ProgressIndicatorThemeData(
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: ColorManager.primaryColor,
     ),
 
@@ -80,7 +80,7 @@ ThemeData getApplicationTheme() {
 
       // enabled border style
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: ColorManager.lightGrey, width: AppSize.s1_5),
+        borderSide: BorderSide(color: ColorManager.lightGrey , width: AppSize.s1_5),
         borderRadius: const BorderRadius.all(
           Radius.circular(AppSize.s8),
         ),

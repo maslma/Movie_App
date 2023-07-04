@@ -36,7 +36,6 @@ class MyApp extends StatelessWidget {
             theme: getApplicationTheme(),
             onGenerateRoute: RoutesGenerator.getRoutes,
             initialRoute: Routes.navBarRoute,
-            // home: const BottomNavView(),
           ),
         );
       },
