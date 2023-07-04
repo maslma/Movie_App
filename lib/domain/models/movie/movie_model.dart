@@ -4,11 +4,14 @@ class MovieModel {
   List<Movie>? movies;
   int? totalPages;
   int? totalResults;
+  String? error;
+
 
   MovieModel(
       {this.dates,
         this.page,
         this.movies,
+        this.error,
         this.totalPages,
         this.totalResults});
 
@@ -38,6 +41,11 @@ class MovieModel {
     data['total_results'] = totalResults;
     return data;
   }
+
+  factory MovieModel.withError(String error) => MovieModel(
+    movies: [],
+    error: error,
+  );
 }
 
 class Dates {

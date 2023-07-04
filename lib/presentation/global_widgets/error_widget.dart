@@ -1,8 +1,8 @@
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
 
-class ErrorWidget extends StatelessWidget {
+class GlobalErrorWidget extends StatelessWidget {
   final dynamic error;
-  const ErrorWidget(this.error, {super.key});
+  const GlobalErrorWidget({required this.error, super.key});
 
   @override
   Widget build(BuildContext context) {

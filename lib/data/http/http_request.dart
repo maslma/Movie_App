@@ -70,7 +70,7 @@
 //   }
 // //get Similar TV Shows
 //   static Future<TVModel> getSimilarTVShows(int id) async {
-//     var params = {
+//     var params = {z
 //       "api_key": AppConst.apiKey,
 //       "language": "en-us",
 //       "page": 1

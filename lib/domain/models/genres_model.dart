@@ -1,7 +1,8 @@
 class GenreModel {
   List<Genres>? genres;
+ String? error;
 
-  GenreModel({this.genres});
+  GenreModel({this.error,this.genres});
 
   GenreModel.fromJson(Map<String, dynamic> json) {
     if (json['genres'] != null) {
@@ -19,6 +20,10 @@ class GenreModel {
     }
     return data;
   }
+  factory GenreModel.withError(String error) => GenreModel(
+    genres: [],
+    error: error,
+  );
 }
 
 class Genres {

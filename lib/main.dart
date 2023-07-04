@@ -25,10 +25,7 @@ class MyApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(create: (context) => BottomNavCubit()),
-            BlocProvider(create: (context) => HomeCubit()
-                  ..getMovies()
-                  ..getGenre()
-            ),
+            BlocProvider(create: (context) => HomeCubit()),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,

@@ -1,26 +1,24 @@
 // ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:movie_app/domain/models/genres_model.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
 import 'package:movie_app/presentation/screens/home/views/widget/genres_movies_widget.dart';
 
 class GenreLists extends StatefulWidget {
-   GenreLists({Key? key,required this.genres}) : super(key: key);
-   List<Genres>? genres;
+  GenreLists({Key? key, required this.genres}) : super(key: key);
+  List<Genres>? genres;
 
   @override
   State<GenreLists> createState() => _GenreListsState();
 }
+
 class _GenreListsState extends State<GenreLists>
     with SingleTickerProviderStateMixin {
   TabController? _tabController;
 
   @override
   void initState() {
-    _tabController = TabController(
-        length:  widget.genres!.length,
-        vsync: this);
+    _tabController = TabController(length: widget.genres!.length, vsync: this);
     _tabController!.addListener(() {});
     super.initState();
   }
@@ -39,7 +37,7 @@ class _GenreListsState extends State<GenreLists>
         length: widget.genres!.length,
         child: Scaffold(
           appBar: PreferredSize(
-            preferredSize:  Size.fromHeight(50.h),
+            preferredSize: Size.fromHeight(50.h),
             child: AppBar(
               bottom: TabBar(
                 physics: const BouncingScrollPhysics(),
@@ -52,13 +50,13 @@ class _GenreListsState extends State<GenreLists>
                 isScrollable: true,
                 tabs: widget.genres!.map((Genres genre) {
                   return Container(
-                    padding:  EdgeInsets.only(
+                    padding: EdgeInsets.only(
                       bottom: 15.h,
                       top: 10.h,
                     ),
                     child: Text(
                       genre.name!.toUpperCase(),
-                      style:  TextStyle(
+                      style: TextStyle(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.bold,
                       ),
@@ -72,7 +70,7 @@ class _GenreListsState extends State<GenreLists>
             controller: _tabController,
             physics: const NeverScrollableScrollPhysics(),
             children: widget.genres!.map((Genres genre) {
-              return  GenreMovies(genreId: genre.id!);
+              return GenreMovies(genreId: genre.id!);
             }).toList(),
           ),
         ),
