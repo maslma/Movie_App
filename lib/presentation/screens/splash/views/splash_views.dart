@@ -20,7 +20,8 @@ class _SplashViewState extends State<SplashView> {
   _goNext() {
     // debugPrint(token);
     // token == null
-    //     ? Navigator.pushReplacementNamed(context, Routes.loginRoute)
+    //     ?
+    Navigator.pushReplacementNamed(context, Routes.navBarRoute);
     //     : Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(MaterialPageRoute(
     //         builder: (context) {
     //           HomeCubit.get(context).getBanners();
@@ -45,28 +46,50 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManager.primaryColor,
-      body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image(
-            height: AppSize.s200.h,
-            width: AppSize.s200.w,
-            image: const AssetImage(
-              ImageAssets.splash,
+      body: Stack(
+        children: [
+          // Positioned(
+          //   left: 0,
+          //   right: 0,
+          //   top: 285.h,
+          //   child: Center(
+          //     child: Text(
+          //       arabicLang! ? "نُجيب " : "Nojeeb",
+          //       style: TextStyle(
+          //         fontSize: 56.sp,
+          //         color: Colors.white,
+          //         fontWeight: FontWeight.w900,
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          // Positioned(
+          //   left: 0,
+          //   right: 0,
+          //   top: 380.h,
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.center,
+          //     children: [
+          //       Text(
+          //         arabicLang! ? "المساعد في التسويق الرقمي" : "Digital Marketing Assistant",
+          //         style: TextStyle(
+          //           fontSize: 25.sp,
+          //           color: Colors.white,
+          //           fontWeight: FontWeight.w700,
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          Positioned(
+            bottom: 60.h,
+            left: 170.w,
+            child: const CircularProgressIndicator(
+              color: ColorManager.secondColor,
             ),
           ),
-              SizedBox(
-                height: AppSize.s40.h,
-              ),
-              Text(
-            AppStrings.splash,
-            style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                  color: ColorManager.black,
-                ),
-          ),
         ],
-      )),
+      ),
     );
   }
 

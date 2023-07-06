@@ -25,6 +25,7 @@ class MovieShowView extends StatelessWidget {
                 const NewPlayingWidget(),
                 const GetGenresWidget(),
                 const MoviesTypeWidget(text: 'UPCOMING',request: 'upcoming'),
+                const MoviesTypeWidget(text: 'POPULAR', request: 'popular'),
                 const MoviesTypeWidget(text: 'TOP RATED',request: 'top_rated'),
                 SizedBox(height: 40.h,)
               ],

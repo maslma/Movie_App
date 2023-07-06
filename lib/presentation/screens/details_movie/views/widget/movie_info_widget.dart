@@ -4,7 +4,7 @@ import 'package:movie_app/domain/models/movie/movie_details_model.dart';
 import 'package:movie_app/presentation/global_widgets/error_widget.dart';
 import 'package:movie_app/presentation/global_widgets/loading_widget.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
-import 'package:movie_app/presentation/screens/details/views/widget/genre_list_widget.dart';
+import 'package:movie_app/presentation/screens/details_movie/views/widget/genre_list_widget.dart';
 import 'package:movie_app/presentation/screens/home/view_model/home_cubit.dart';
 
 import 'over_view_widget.dart';

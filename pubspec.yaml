@@ -39,7 +39,7 @@ dependencies:
   dio: ^4.0.4                       # for http request, get movie data from api
   flutter_rating_bar: ^4.0.1         # for display star rating
   page_indicator: ^0.4.1            # for page view and indicator
-  youtube_player_flutter: ^8.0.0    # for import trailers from youtu
+  youtube_player_flutter: ^8.1.2    # for import trailers from youtu
   flutter_dotenv: ^5.0.2             # for create .env file, to store api key
   hive: ^2.0.6                      # for hive noSQL
   hive_flutter: ^1.1.0              # for hive noSQL

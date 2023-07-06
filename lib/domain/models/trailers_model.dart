@@ -34,5 +34,3 @@ class Video {
     type: json['type'],
   );
 }
-//so far, i have done all the json model
-//lets create http request for tmdb api

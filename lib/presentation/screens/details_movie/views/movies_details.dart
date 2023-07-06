@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
-import 'package:movie_app/presentation/screens/details/views/widget/reviews_widget.dart';
-import 'package:movie_app/presentation/screens/details/views/widget/similar_movie_widget.dart';
+import 'package:movie_app/presentation/screens/details_movie/views/widget/reviews_widget.dart';
+import 'package:movie_app/presentation/screens/details_movie/views/widget/similar_movie_widget.dart';
 import 'package:movie_app/presentation/screens/home/view_model/home_cubit.dart';
-import 'package:movie_app/presentation/screens/details/views/widget/movie_info_widget.dart';
+import 'package:movie_app/presentation/screens/details_movie/views/widget/movie_info_widget.dart';
+import 'package:movie_app/presentation/screens/trailers/views/trailers_view.dart';
 
 class MoviesDetails extends StatefulWidget {
   const MoviesDetails({Key? key, required this.movie, this.request})
@@ -27,11 +28,17 @@ class _MoviesDetailsState extends State<MoviesDetails> {
               widget.movie.title!,
               overflow: TextOverflow.ellipsis,
             ),
+            leading: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: const Icon(Icons.arrow_back_ios_outlined)),
             elevation: 0.0,
           ),
           body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Stack(
                   clipBehavior: Clip.none,
@@ -94,10 +101,10 @@ class _MoviesDetailsState extends State<MoviesDetails> {
                     color: Colors.redAccent,
                     child: TextButton.icon(
                       onPressed: () {
-                        // Navigator.of(context).push(MaterialPageRoute(
-                        //   builder: (_) =>
-                        //       TrailersScreen(shows: "movie", id: widget.movie.id!),
-                        // ));
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) =>
+                              TrailersView(shows: "movie", id: widget.movie.id!),
+                        ));
                       },
                       icon:  Icon(
                         Icons.play_circle_fill_rounded,

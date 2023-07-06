@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:movie_app/domain/models/tv/tv_model.dart';
 import 'package:movie_app/presentation/global_widgets/error_widget.dart';
 import 'package:movie_app/presentation/global_widgets/loading_widget.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
-import 'package:movie_app/presentation/screens/details_movie/views/movies_details.dart';
-import 'package:movie_app/presentation/screens/home/view_model/home_cubit.dart';
+import 'package:movie_app/presentation/screens/details_tv/views/tv_details.dart';
+import 'package:movie_app/presentation/screens/tvs/view_model/tv_cubit.dart';
+import 'package:movie_app/presentation/screens/tvs/view_model/tv_state.dart';
 
-class GenreMovies extends StatelessWidget {
-  const GenreMovies({Key? key, required this.genreId}) : super(key: key);
+class GenreTv extends StatelessWidget {
+  const GenreTv({Key? key, required this.genreId}) : super(key: key);
   final int genreId;
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomeCubit, HomeState>(
+    return BlocConsumer<TvCubit, TvState>(
       listener: (context, state) {},
       builder: (context, state) {
-        HomeCubit cubit = HomeCubit.get(context);
-        return FutureBuilder<MovieModel>(
-          future: cubit.getDiscoverMovies(genreId),
-          builder: (context, AsyncSnapshot<MovieModel> snapshot) {
+        TvCubit cubit = TvCubit.get(context);
+        return FutureBuilder<TVModel>(
+          future: cubit.getDiscoverTVShows(genreId),
+          builder: (context, AsyncSnapshot<TVModel> snapshot) {
             if (snapshot.hasData) {
               if (snapshot.data!.error != null &&
                   snapshot.data!.error!.isNotEmpty) {
@@ -29,7 +31,7 @@ class GenreMovies extends StatelessWidget {
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
-                  itemCount: snapshot.data!.movies!.length,
+                  itemCount: snapshot.data!.tvShows!.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: EdgeInsets.only(
@@ -41,15 +43,15 @@ class GenreMovies extends StatelessWidget {
                         onTap: () {
                           Navigator.of(context, rootNavigator: true).push(
                             MaterialPageRoute(
-                              builder: (context) => MoviesDetails(
-                                  movie: snapshot.data!.movies![index]),
+                              builder: (context) => TvDetails(
+                                  tvShows: snapshot.data!.tvShows![index]),
                             ),
                           );
                         },
                         child: Column(
                           children: <Widget>[
                             Hero(
-                              tag: '${snapshot.data!.movies![index].id}',
+                              tag: '${snapshot.data!.tvShows![index].id}',
                               child: Container(
                                 width: 120.w,
                                 height: 180.h,
@@ -60,7 +62,7 @@ class GenreMovies extends StatelessWidget {
                                   shape: BoxShape.rectangle,
                                   image: DecorationImage(
                                     image: NetworkImage(
-                                        "https://image.tmdb.org/t/p/w220_and_h330_face${snapshot.data!.movies![index].posterPath}"),
+                                        "https://image.tmdb.org/t/p/w220_and_h330_face${snapshot.data!.tvShows![index].poster}"),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -72,7 +74,7 @@ class GenreMovies extends StatelessWidget {
                             SizedBox(
                               width: 100.w,
                               child: Text(
-                                snapshot.data!.movies![index].title!,
+                                snapshot.data!.tvShows![index].name!,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   height: 1.4.h,
@@ -88,7 +90,7 @@ class GenreMovies extends StatelessWidget {
                             Row(
                               children: <Widget>[
                                 Text(
-                                  snapshot.data!.movies![index].voteAverage
+                                  snapshot.data!.tvShows![index].rating
                                       .toString(),
                                   style: TextStyle(
                                     color: Colors.white,
@@ -102,7 +104,7 @@ class GenreMovies extends StatelessWidget {
                                 RatingBar.builder(
                                   itemSize: 8,
                                   initialRating: snapshot
-                                          .data!.movies![index].voteAverage! /
+                                          .data!.tvShows![index].rating! /
                                       2,
                                   minRating: 1,
                                   direction: Axis.horizontal,

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/data/remote/dio_helper.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
 import 'package:movie_app/presentation/screens/home/view_model/home_cubit.dart';
+import 'package:movie_app/presentation/screens/trailers/view_model/trailers_cubit.dart';
+import 'package:movie_app/presentation/screens/tvs/view_model/tv_cubit.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,13 +28,15 @@ class MyApp extends StatelessWidget {
           providers: [
             BlocProvider(create: (context) => BottomNavCubit()),
             BlocProvider(create: (context) => HomeCubit()),
+            BlocProvider(create: (context) => TvCubit()),
+            BlocProvider(create: (context) => TrailersCubit()),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Movie App',
             theme: getApplicationTheme(),
             onGenerateRoute: RoutesGenerator.getRoutes,
-            initialRoute: Routes.navBarRoute,
+            initialRoute: Routes.splashRoute,
           ),
         );
       },

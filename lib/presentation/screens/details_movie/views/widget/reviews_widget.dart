@@ -21,20 +21,6 @@ class ReviewsWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: 10.w, top: 10.h),
-                child: Text(
-                  "REVIEWS",
-                  style: TextStyle(
-                    color: ColorManager.textColor,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 12.sp,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 5.h,
-              ),
               FutureBuilder<ReviewsModel>(
                 future: cubit.getReviews(request, id),
                 builder: (context, AsyncSnapshot<ReviewsModel> snapshot) {
@@ -44,20 +30,39 @@ class ReviewsWidget extends StatelessWidget {
                       return GlobalErrorWidget(error: snapshot.data!.error);
                     }
                     return Column(
-                      children: List.generate(snapshot.data!.reviews!.length,
-                          (index) {
-                        return Card(
-                          color: ColorManager.textColor,
-                          margin: EdgeInsets.symmetric(vertical: 10.h),
-                          elevation: 5,
-                          child: ListTile(
-                            title: Text(
-                              snapshot.data!.reviews![index].content!,
-                              style: const TextStyle(color: Colors.white),
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 10.w),
+                          child: Text(
+                            "REVIEWS",
+                            style: TextStyle(
+                              color: ColorManager.textColor,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 12.sp,
                             ),
                           ),
-                        );
-                      }),
+                        ),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        Column(
+                          children: List.generate(snapshot.data!.reviews!.length,
+                              (index) {
+                            return Card(
+                              color: ColorManager.textColor,
+                              margin: EdgeInsets.symmetric(vertical: 10.h),
+                              elevation: 5,
+                              child: ListTile(
+                                title: Text(
+                                  snapshot.data!.reviews![index].content!,
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            );
+                          }),
+                        ),
+                      ],
                     );
                   } else if (snapshot.hasError) {
                     return GlobalErrorWidget(error: snapshot.error);

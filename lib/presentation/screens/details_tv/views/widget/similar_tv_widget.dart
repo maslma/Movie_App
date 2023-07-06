@@ -1,54 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:movie_app/domain/models/tv/tv_model.dart';
 import 'package:movie_app/presentation/global_widgets/error_widget.dart';
 import 'package:movie_app/presentation/global_widgets/loading_widget.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
-import 'package:movie_app/presentation/screens/details/views/movies_details.dart';
-import 'package:movie_app/presentation/screens/home/view_model/home_cubit.dart';
+import 'package:movie_app/presentation/screens/details_tv/views/tv_details.dart';
+import 'package:movie_app/presentation/screens/tvs/view_model/tv_cubit.dart';
+import 'package:movie_app/presentation/screens/tvs/view_model/tv_state.dart';
 
-class SimilarMovieWidget extends StatelessWidget {
+class SimilarTvWidget extends StatelessWidget {
   final int id;
-  const SimilarMovieWidget({super.key, required this.id});
+  const SimilarTvWidget({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomeCubit, HomeState>(
+    return BlocConsumer<TvCubit, TvState>(
       listener: (context, state) {},
       builder: (context, state) {
-        HomeCubit cubit = HomeCubit.get(context);
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(left: 10.w, top: 5.h),
-              child: Text(
-                "SIMIALR MOVIES",
-                style: TextStyle(
-                  color: ColorManager.textColor,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 12.sp,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 5.h,
-            ),
-            FutureBuilder<MovieModel>(
-              future: cubit.getSimilarMovies(id),
-              builder: (context, AsyncSnapshot<MovieModel> snapshot) {
-                if (snapshot.hasData) {
-                  if (snapshot.data!.error != null &&
-                      snapshot.data!.error!.isNotEmpty)
-                  {
-                    return GlobalErrorWidget(error:snapshot.data!.error );
-                  }
-                  return Container(
+        TvCubit cubit = TvCubit.get(context);
+        return FutureBuilder<TVModel>(
+          future: cubit.getSimilarTVShows(id),
+          builder: (context, AsyncSnapshot<TVModel> snapshot) {
+            if (snapshot.hasData) {
+              if (snapshot.data!.error != null &&
+                  snapshot.data!.error!.isNotEmpty)
+              {
+                return GlobalErrorWidget(error:snapshot.data!.error );
+              }
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 10.w, top: 5.h),
+                    child: Text(
+                      "SIMILAR TV SHOWS",
+                      style: TextStyle(
+                        color: ColorManager.textColor,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 12.sp,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  Container(
                     height: 270.h,
                     padding: EdgeInsets.only(left: 10.w),
                     child: ListView.builder(
                       physics: const BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
-                      itemCount: snapshot.data!.movies!.length,
+                      itemCount: snapshot.data!.tvShows!.length,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: EdgeInsets.only(
@@ -61,8 +63,8 @@ class SimilarMovieWidget extends StatelessWidget {
                               Navigator.of(context, rootNavigator: true)
                                   .push(
                                 MaterialPageRoute(
-                                  builder: (context) =>   MoviesDetails(
-                                    movie: snapshot.data!.movies![index],
+                                  builder: (context) =>   TvDetails(
+                                    tvShows: snapshot.data!.tvShows![index],
                                   ),
                                 ),
                               );
@@ -71,7 +73,7 @@ class SimilarMovieWidget extends StatelessWidget {
                               children: <Widget>[
                                 Hero(
                                   tag:
-                                  "${snapshot.data!.movies![index].id}",
+                                  "${snapshot.data!.tvShows![index].id}",
                                   child: Container(
                                     width: 120.w,
                                     height: 180.h,
@@ -82,7 +84,7 @@ class SimilarMovieWidget extends StatelessWidget {
                                       shape: BoxShape.rectangle,
                                       image: DecorationImage(
                                         image: NetworkImage(
-                                            "https://image.tmdb.org/t/p/w220_and_h330_face${snapshot.data!.movies![index].posterPath}"),
+                                            "https://image.tmdb.org/t/p/w220_and_h330_face${snapshot.data!.tvShows![index].poster}"),
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -94,7 +96,7 @@ class SimilarMovieWidget extends StatelessWidget {
                                 SizedBox(
                                   width: 100.w,
                                   child: Text(
-                                    snapshot.data!.movies![index].title!,
+                                    snapshot.data!.tvShows![index].name!,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                       height: 1.4.h,
@@ -111,7 +113,7 @@ class SimilarMovieWidget extends StatelessWidget {
                                   children: <Widget>[
                                     Text(
                                       snapshot
-                                          .data!.movies![index].voteAverage
+                                          .data!.tvShows![index].rating
                                           .toString(),
                                       style: TextStyle(
                                         color: Colors.white,
@@ -125,7 +127,7 @@ class SimilarMovieWidget extends StatelessWidget {
                                     RatingBar.builder(
                                       itemSize: 8,
                                       initialRating: snapshot.data!
-                                          .movies![index].voteAverage! /
+                                          .tvShows![index].rating! /
                                           2,
                                       minRating: 1,
                                       direction: Axis.horizontal,
@@ -149,17 +151,17 @@ class SimilarMovieWidget extends StatelessWidget {
                         );
                       },
                     ),
-                  );
-                }else if(snapshot.hasError)
-                {
-                  return GlobalErrorWidget(error:snapshot.error );
-                }else
-                {
-                  return const GlobalLoadingWidget();
-                }
-              },
-            ),
-          ],
+                  ),
+                ],
+              );
+            }else if(snapshot.hasError)
+            {
+              return GlobalErrorWidget(error:snapshot.error );
+            }else
+            {
+              return const GlobalLoadingWidget();
+            }
+          },
         );
       },
     );

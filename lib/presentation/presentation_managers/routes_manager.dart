@@ -4,7 +4,7 @@ import 'package:movie_app/presentation/presentation_managers/exports.dart';
 
 
 class Routes {
-  // static const String splashRoute = '/';
+  static const String splashRoute = '/';
   // static const String onboardingRoute = '/onboardingRoute';
   // static const String loginRoute = '/login';
   // static const String registerRoute = '/register';
@@ -20,8 +20,8 @@ class RoutesGenerator {
     switch (settings.name) {
       case Routes.navBarRoute:
         return MaterialPageRoute(builder: (_) => const BottomNavView());
-      // case Routes.loginRoute:
-      //   return MaterialPageRoute(builder: (_) => const LoginView());
+      case Routes.splashRoute:
+        return MaterialPageRoute(builder: (_) => const SplashView());
       // case Routes.registerRoute:
       //   return MaterialPageRoute(builder: (_) => const RegisterView());
       // case Routes.homeRoute:
