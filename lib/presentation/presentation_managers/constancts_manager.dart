@@ -1,5 +1,5 @@
 class AppConst {
-  static const int splashDelay = 5;
+  static const int splashDelay = 3;
 
   // retrieve api key here
   static const String apiKey = '0eeb15efa75896ed8f97a4cb1b9c3fd5';

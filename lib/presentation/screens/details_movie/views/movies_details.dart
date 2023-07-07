@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:movie_app/domain/models/movie/hive_movie_model.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
 import 'package:movie_app/presentation/screens/details_movie/views/widget/reviews_widget.dart';
 import 'package:movie_app/presentation/screens/details_movie/views/widget/similar_movie_widget.dart';
@@ -7,16 +9,25 @@ import 'package:movie_app/presentation/screens/details_movie/views/widget/movie_
 import 'package:movie_app/presentation/screens/trailers/views/trailers_view.dart';
 
 class MoviesDetails extends StatefulWidget {
-  const MoviesDetails({Key? key, required this.movie, this.request})
+  const MoviesDetails({Key? key, required this.movie, this.request, this.hiveId})
       : super(key: key);
   final Movie movie;
   final String? request;
+  final int? hiveId;
 
   @override
   State<MoviesDetails> createState() => _MoviesDetailsState();
 }
 
 class _MoviesDetailsState extends State<MoviesDetails> {
+  late Box<HiveMovieModel> _movieWatchLists;
+
+  @override
+  void initState() {
+    _movieWatchLists = Hive.box<HiveMovieModel>('movie_lists');
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeCubit, HomeState>(
@@ -126,22 +137,22 @@ class _MoviesDetailsState extends State<MoviesDetails> {
                     color: ColorManager.secondColor,
                     child: TextButton.icon(
                       onPressed: () {
-                        // if (widget.hiveId == null) {
-                        //   HiveMovieModel newValue = HiveMovieModel(
-                        //     id: widget.movie.id!,
-                        //     rating: widget.movie.rating!,
-                        //     title: widget.movie.title!,
-                        //     backDrop: widget.movie.backDrop!,
-                        //     poster: widget.movie.poster!,
-                        //     overview: widget.movie.overview!,
-                        //   );
-                        //   _movieWatchLists.add(newValue);
-                        //   _showAlertDialog();
-                        // }
-                        // if (widget.hiveId != null) {
-                        //   _movieWatchLists.deleteAt(widget.hiveId!);
-                        //   Navigator.of(context).pop(true);
-                        // }
+                        if (widget.hiveId == null) {
+                          HiveMovieModel newValue = HiveMovieModel(
+                            id: widget.movie.id!,
+                            rating: widget.movie.voteAverage!,
+                            title: widget.movie.title!,
+                            backDrop: widget.movie.backdropPath!,
+                            poster: widget.movie.posterPath!,
+                            overview: widget.movie.overview!,
+                          );
+                          _movieWatchLists.add(newValue);
+                          _addWatchList();
+                        }
+                        if (widget.hiveId != null) {
+                          _movieWatchLists.deleteAt(widget.hiveId!);
+                          Navigator.of(context).pop(true);
+                        }
                       },
                       icon: Icon(
                         // widget.hiveId == null ?
@@ -166,6 +177,24 @@ class _MoviesDetailsState extends State<MoviesDetails> {
             ),
           ],
 
+        );
+      },
+    );
+  }
+  void _addWatchList() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Added to List"),
+          content:
+          Text("${widget.movie.title!} successfully added to watch list"),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('OK'),
+            )
+          ],
         );
       },
     );

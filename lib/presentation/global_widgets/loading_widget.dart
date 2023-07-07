@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/presentation/presentation_managers/exports.dart';
+import 'package:shimmer/shimmer.dart';
 
 class GlobalLoadingWidget extends StatelessWidget {
   const GlobalLoadingWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return  Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children:  <Widget>[
+        children: <Widget>[
           SizedBox(
-            width: 25.0,
-            height: 25.0,
-            child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-              strokeWidth: 4.0,
-            ),
+            width: double.infinity,
+            height: 100.h,
           )
         ],
       ),

@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:movie_app/presentation/presentation_managers/assets_managers.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
 
 class SplashView extends StatefulWidget {
@@ -14,7 +13,7 @@ class _SplashViewState extends State<SplashView> {
   Timer? _timer;
 
   _statrtDelay() {
-    _timer = Timer(const Duration(milliseconds: AppConst.splashDelay), _goNext);
+    _timer = Timer(const Duration(seconds: AppConst.splashDelay), _goNext);
   }
 
   _goNext() {
@@ -48,39 +47,42 @@ class _SplashViewState extends State<SplashView> {
       backgroundColor: ColorManager.primaryColor,
       body: Stack(
         children: [
-          // Positioned(
-          //   left: 0,
-          //   right: 0,
-          //   top: 285.h,
-          //   child: Center(
-          //     child: Text(
-          //       arabicLang! ? "نُجيب " : "Nojeeb",
-          //       style: TextStyle(
-          //         fontSize: 56.sp,
-          //         color: Colors.white,
-          //         fontWeight: FontWeight.w900,
-          //       ),
-          //     ),
-          //   ),
-          // ),
-          // Positioned(
-          //   left: 0,
-          //   right: 0,
-          //   top: 380.h,
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.center,
-          //     children: [
-          //       Text(
-          //         arabicLang! ? "المساعد في التسويق الرقمي" : "Digital Marketing Assistant",
-          //         style: TextStyle(
-          //           fontSize: 25.sp,
-          //           color: Colors.white,
-          //           fontWeight: FontWeight.w700,
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          // ),
+          Positioned(
+            left: 0,
+            right: 0,
+            top: 300.h,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                   "T M D B",
+                  style: TextStyle(
+                    fontSize: 50.sp,
+                    color: ColorManager.secondColor,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            top: 370.h,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                   "     Millions of movies, TV shows \nand people to discover Explore now.",
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    color: ColorManager.secondColor,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
+            ),
+          ),
           Positioned(
             bottom: 60.h,
             left: 170.w,

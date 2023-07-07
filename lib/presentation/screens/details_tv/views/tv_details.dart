@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:movie_app/domain/models/tv/hive_tv_model.dart';
 import 'package:movie_app/domain/models/tv/tv_model.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
 import 'package:movie_app/presentation/screens/details_movie/views/widget/reviews_widget.dart';
@@ -9,16 +11,26 @@ import 'package:movie_app/presentation/screens/tvs/view_model/tv_cubit.dart';
 import 'package:movie_app/presentation/screens/tvs/view_model/tv_state.dart';
 
 class TvDetails extends StatefulWidget {
-  const TvDetails({Key? key, required this.tvShows, this.request})
+  const TvDetails({Key? key, required this.tvShows, this.request, this.hiveId})
       : super(key: key);
   final TVShows tvShows;
   final String? request;
+  final int? hiveId;
+
 
   @override
   State<TvDetails> createState() => _TvDetailsState();
 }
 
 class _TvDetailsState extends State<TvDetails> {
+  late Box<HiveTVModel> _tvWatchLists;
+
+  @override
+  void initState() {
+    _tvWatchLists = Hive.box<HiveTVModel>('tv_lists');
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<TvCubit, TvState>(
@@ -128,22 +140,22 @@ class _TvDetailsState extends State<TvDetails> {
                     color: ColorManager.secondColor,
                     child: TextButton.icon(
                       onPressed: () {
-                        // if (widget.hiveId == null) {
-                        //   HiveMovieModel newValue = HiveMovieModel(
-                        //     id: widget.movie.id!,
-                        //     rating: widget.movie.rating!,
-                        //     title: widget.movie.title!,
-                        //     backDrop: widget.movie.backDrop!,
-                        //     poster: widget.movie.poster!,
-                        //     overview: widget.movie.overview!,
-                        //   );
-                        //   _movieWatchLists.add(newValue);
-                        //   _showAlertDialog();
-                        // }
-                        // if (widget.hiveId != null) {
-                        //   _movieWatchLists.deleteAt(widget.hiveId!);
-                        //   Navigator.of(context).pop(true);
-                        // }
+                        if (widget.hiveId == null) {
+                          HiveTVModel newValue = HiveTVModel(
+                            id: widget.tvShows.id!,
+                            rating: widget.tvShows.rating!,
+                            name: widget.tvShows.name!,
+                            backDrop: widget.tvShows.backDrop!,
+                            poster: widget.tvShows.poster!,
+                            overview: widget.tvShows.overview!,
+                          );
+                          _tvWatchLists.add(newValue);
+                          _showAlertDialog();
+                        }
+                        if (widget.hiveId != null) {
+                          _tvWatchLists.deleteAt(widget.hiveId!);
+                          Navigator.of(context).pop(true);
+                        }
                       },
                       icon: Icon(
                         // widget.hiveId == null ?
@@ -171,4 +183,23 @@ class _TvDetailsState extends State<TvDetails> {
       },
     );
   }
+  void _showAlertDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Added to List"),
+          content:
+          Text("${widget.tvShows.name!} successfully added to watch list"),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('OK'),
+            )
+          ],
+        );
+      },
+    );
+  }
+
 }
