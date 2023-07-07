@@ -2,7 +2,6 @@
 export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:movie_app/data/local/chach_helper.dart';
-export 'package:movie_app/presentation/screens/login/view_model/login_cubit.dart';
 export 'package:movie_app/utities/bloc_observer.dart';
 export 'package:movie_app/presentation/presentation_managers/routes_manager.dart';
 export 'package:movie_app/presentation/presentation_managers/theme_manager.dart';
@@ -20,12 +19,8 @@ export  'package:movie_app/presentation/global_widgets/global_text_form_field.da
 export  'package:movie_app/presentation/presentation_managers/color_manager.dart';
 export  'package:movie_app/presentation/presentation_managers/string_manager.dart';
 export  'package:movie_app/presentation/presentation_managers/values_managers.dart';
-export 'package:movie_app/presentation/screens/login/view_model/login_states.dart';
 export  'package:movie_app/utities/main_method.dart';
 
-// register export
-export 'package:movie_app/presentation/screens/register/view_model/cubit/register_cubit.dart';
-export 'package:movie_app/presentation/screens/register/view_model/cubit/register_state.dart';
 
 //cart
 // export 'package:movie_app/presentation/screens/cart/view_model/cart_cubit.dart';
@@ -44,8 +39,6 @@ export 'package:movie_app/presentation/presentation_managers/constancts_manager.
 export 'package:movie_app/presentation/screens/home/views/home_view.dart';
 export 'package:movie_app/presentation/screens/bottom_navBar/views/bottom_navbar_view.dart';
 // export 'package:movie_app/presentation/screens/home/views/watch_list_view.dart';
-export 'package:movie_app/presentation/screens/login/views/login_view.dart';
-export 'package:movie_app/presentation/screens/register/views/register_view.dart';
 export 'package:movie_app/presentation/screens/splash/views/splash_views.dart';
 
 // Bottom nav bar
