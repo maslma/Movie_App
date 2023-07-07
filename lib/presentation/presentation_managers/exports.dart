@@ -38,7 +38,6 @@ export 'package:movie_app/presentation/screens/register/view_model/cubit/registe
 // export 'package:movie_app/presentation/screens/search/views/widget/search_empty.dart';
 // export 'package:movie_app/presentation/screens/search/views/widget/search_item.dart';
 // export 'package:movie_app/presentation/screens/search/views/widget/search_not_found.dart';
-export 'package:movie_app/presentation/global_widgets/primary_searchtextfield.dart';
 export 'package:movie_app/presentation/presentation_managers/constancts_manager.dart';
 
 // route

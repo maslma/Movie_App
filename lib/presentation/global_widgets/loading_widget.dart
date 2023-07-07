@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:movie_app/presentation/presentation_managers/exports.dart';
-import 'package:shimmer/shimmer.dart';
 
 class GlobalLoadingWidget extends StatelessWidget {
   const GlobalLoadingWidget({super.key});
